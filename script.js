@@ -22,15 +22,19 @@ function lancerBoucleDeJeu (liste, monScore) {
     }
 }
 
+function lancerJeu () {
+    if (choisirPhrasesOuMots() === "mots" ) {
+        lancerBoucleDeJeu(listeMots,monScore)
+    } else { 
+        lancerBoucleDeJeu(listePhrases,monScore)
+    }
+    afficherResultat()
+}
+
 const listeMots = ['Pétunia', 'Cachalot', 'Bourbouze']
 const listePhrases = ['Bonjour, comment allez-vous ?', 'Salut, ça va ?', 'Coucou, ça va ?']
 
 let monScore = 0
 let mesEssais = 0
 
-
-if (choisirPhrasesOuMots() === "mots" ) {
-    lancerBoucleDeJeu(listeMots,monScore)
-} else { 
-    lancerBoucleDeJeu(listePhrases,monScore)
-}
+lancerJeu()
