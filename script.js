@@ -11,38 +11,26 @@ function choisirPhrasesOuMots() {
     return monChoix
     }
     
+function lancerBoucleDeJeu (liste, monScore) {
+    for (let i = 0; i < liste.length; i++) {
+        let motUtilisateur = prompt("Entrez le mot : " + liste[i])
+        if (motUtilisateur === liste[i]) {
+            monScore ++
+            mesEssais ++
+            console.log(afficherResultat(monScore,mesEssais))
+        }
+    }
+}
+
 const listeMots = ['Pétunia', 'Cachalot', 'Bourbouze']
 const listePhrases = ['Bonjour, comment allez-vous ?', 'Salut, ça va ?', 'Coucou, ça va ?']
 
 let monScore = 0
 let mesEssais = 0
 
+
 if (choisirPhrasesOuMots() === "mots" ) {
-    for (let i = 0; i < listeMots.length; i++) {
-        let motUtilisateur = prompt("Entrez le mot : " + listeMots[i])
-        if (motUtilisateur === listeMots[i]) {
-            monScore ++
-            mesEssais ++
-            console.log(afficherResultat(monScore,mesEssais))
-        }
-    }
+    lancerBoucleDeJeu(listeMots,monScore)
 } else { 
-    for (let i = 0; i < listePhrases.length; i++) {
-        let phraseUtilisateur = prompt("Entrez la phrase : " + listePhrases[i])
-        if (phraseUtilisateur === listePhrases[i]) {
-            monScore ++
-            mesEssais ++
-            console.log(afficherResultat(monScore,mesEssais))
-        }
-    }
-    
+    lancerBoucleDeJeu(listePhrases,monScore)
 }
-
-
-
-
-
-
-
-
-
