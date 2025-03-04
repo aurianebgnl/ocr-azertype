@@ -4,10 +4,21 @@
  * 
  *********************************************************************************/
 
-// Ici, j'ai mis la fonction lancerJeu() en commentaire pour ne pas être dérangé par l'affichage des popups. 
-// lancerJeu()
 
-let baliseZoneSaisie = document.getElementById("inputEcriture");
-let baliseBouton = document.getElementById("btnValiderMot");
+lancerJeu()
 
-console.log(baliseZoneProposition, baliseBouton);
+// let inputEcriture = document.getElementById("inputEcriture");
+// console.log(inputEcriture);
+
+// let btnValiderMotn = document.getElementById("btnValiderMot");
+// console.log(btnValiderMotn);
+
+// let zoneProposition = document.querySelector(".zoneProposition");
+// console.log(zoneProposition);
+
+// let spanScore = document.querySelector(".zoneScore span");
+// console.log(spanScore);
+
+// let listeBtnRadio = document.querySelectorAll(".optionSource input");
+// console.log(listeBtnRadio);
+

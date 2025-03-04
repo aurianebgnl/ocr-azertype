@@ -1,36 +1,46 @@
-function afficherResultat(score, nbPropositions) {
-    console.log('Votre score est de ' + score + ' sur ' + nbPropositions)
-    }
 
-function choisirPhrasesOuMots() {
-    let monChoix = prompt('Veuillez choisir la liste : phrases ou mots ?', '"phrases" ou "mots"')
-    while (monChoix !== "phrases" && monChoix !== "mots") {
-        monChoix = prompt('Vous devez choisir entre "mots" et "phrases"')
-        }
-    return monChoix
-    }
-    
-function lancerBoucleDeJeu (liste) {
-    let monScore = 0
-    for (let i = 0; i < liste.length; i++) {
-        let motUtilisateur = prompt("Entrez le mot : " + liste[i])
-        if (motUtilisateur === liste[i]) {
-            monScore++
-        }
-    }
-    return monScore
+function afficherResultat(score, nbPropositions) {
+    let spanScore = document.querySelector(".zoneScore span")
+    spanScore.innerText= `${score} / ${nbPropositions}`
+    console.log('Votre score est de ' + score + ' sur ' + nbPropositions)
+}
+
+function afficherProposition (afficherMot) {
+    let divProposition = document.querySelector(".zoneProposition");
+    divProposition.innerText = afficherMot;
 }
 
 function lancerJeu () {
-    let choix = choisirPhrasesOuMots()
-    let monScore = 0
-    let mesEssais = 0
-    if (choix === "mots" ) {
-        monScore = lancerBoucleDeJeu(listeMots,monScore)
-        mesEssais = listeMots.length
-    } else { 
-        monScore = lancerBoucleDeJeu(listePhrases,monScore)
-        mesEssais = listePhrases.length
-    }
-    afficherResultat(monScore, mesEssais)
+    let i = 0;
+    let score = 0;
+    
+    let btnValiderMot = document.querySelector("#btnValiderMot");
+    let inputEcriture = document.querySelector("#inputEcriture");
+
+    afficherProposition(listeMots[i]);
+    afficherResultat(score, i);
+
+    btnValiderMot.addEventListener('click', () => {
+        
+        if (inputEcriture.value === listeMots[i]) {
+            score++
+        };
+        i ++;
+        afficherResultat(score, i);
+        inputEcriture.value = "";
+        
+        if (i < listeMots.length){
+            afficherProposition(listeMots[i])
+            // console.log(`à taper : ${listeMots[i]}`);
+        } else {
+            afficherProposition("Le jeu est terminé !");
+            btnValiderMot.disabled = true;
+            // console.log("c'est fini")
+        } 
+        
+        afficherResultat(score, i);
+        
+    });
+
 }
+
